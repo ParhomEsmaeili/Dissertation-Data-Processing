@@ -42,23 +42,9 @@ def mask_extraction(image):
     '''
 
     grayscale = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
-    #Since not all of the specularities have sharp intensity gradients, and the inpainting mask is formed from the intersection between high intensity (white) pixels and
-    #high image gradients, a Gaussian blur is not that necessary. 
-
-    #sobel_edges = cv2.Sobel(grayscale, cv2.CV_64F, 1, 0, ksize=1)/255
-    #Output of applying the Sobel filter is rescaled onto the [0, 1] pixel range.
-
-    #sobel_binarised =  np.where(sobel_edges > 0.05, 1, 0)
-    # Thresholding the pixels which correspond to edge pixels under the use of a primitive edge detector. Parameters are tuned manually to ensure a sufficient quantity of
-    # edges are detected, such that applying the second mask corresponding to high intensity pixels isolates a sizeable quantity of the specularity pixels. 
-
-    #Blurring to smooth out the shape of the mask, i.e. less pixellated/blocky white pixels.
-
     unblurred_sobel = cv2.Sobel(grayscale, cv2.CV_64F, 1, 0, ksize=1)/255
     high_gradient =  np.where((unblurred_sobel) > 0.05, 1, 0)#0.2, 1, 0)
 
-
-    #high_canny = np.where(lapl > 10, 1, 0)
     mask1 = cv2.GaussianBlur(np.array(255*high_gradient).astype(np.uint8), (5,5), 0)
  
  
@@ -70,10 +56,7 @@ def mask_extraction(image):
     mask_intersection = high_intensity_pixel_mask * mask1 #sobel_mask
     kernel = np.ones((3,3), np.uint8)
     mask2 = cv2.dilate(mask_intersection.astype(np.uint8), kernel, iterations = 1)
-    #mask2_smoothed = cv2.GaussianBlur(mask2.astype(np.uint8), (1,1), 0)
-    #plt.imshow(high_intensity_pixel_mask) #(cv2.imshow('highintensity', high_intensity_pixel_mask)
-    #cv2.imshow('highgrad', sobel_mask)
-    #cv2.waitKey(0)
+
     return mask2#_smoothed 
 
 def main():
@@ -94,8 +77,8 @@ def main():
             mask = mask_extraction(image)
             rescaled_spec = scaling_specularities(image, mask)
             cv2.imwrite(os.path.join(output_dir, image_name), rescaled_spec)
-
-    return print('Specularity rescaling complete!')
+        print('Specularity rescaling of current scale complete.')
+    return print('Specularity rescaling of all sequences complete!')
 
 if __name__ == '__main__':
     main()

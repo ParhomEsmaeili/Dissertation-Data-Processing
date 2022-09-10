@@ -34,33 +34,37 @@ def main():
     endomapper_inpaint_training_sampled_frames, endomapper_inpaint_validation_sampled_frames, endomapper_inpaint_testing_sampled_frames = endomapper_inpaintonly_class_instantiation.frame_sampling()
     endomapper_speconly_training_sampled_frames, endomapper_speconly_validation_sampled_frames, endomapper_speconly_testing_sampled_frames = endomapper_speconly_class_instantiation.frame_sampling()
 
+    pickle_file_path = os.path.join(os.getcwd(), 'Sampled Frames Lists')
 
-    with open('UCL Training Sampled Frames', 'wb') as fp:
+    if not os.path.isdir(pickle_file_path):
+        os.makedirs(pickle_file_path)
+
+    with open(os.path.join(pickle_file_path,'UCL Training Sampled Frames'), 'wb') as fp:
         pickle.dump(ucl_training_sampled_frames, fp)
         fp.close()
-    with open('UCL Validation Sampled Frames', 'wb') as fp:
+    with open(os.path.join(pickle_file_path, 'UCL Validation Sampled Frames'), 'wb') as fp:
         pickle.dump(ucl_validation_sampled_frames, fp)
-    with open('UCL Testing Sampled Frames', 'wb') as fp:
+    with open(os.path.join(pickle_file_path,'UCL Testing Sampled Frames'), 'wb') as fp:
         pickle.dump(ucl_testing_sampled_frames, fp)
-    with open('EndoMapper Training Sampled Frames', 'wb') as fp:
+    with open(os.path.join(pickle_file_path, 'EndoMapper Training Sampled Frames'), 'wb') as fp:
         pickle.dump(endomapper_training_sampled_frames, fp)
-    with open('EndoMapper Validation Sampled Frames', 'wb') as fp:
+    with open(os.path.join(pickle_file_path, 'EndoMapper Validation Sampled Frames'), 'wb') as fp:
         pickle.dump(endomapper_validation_sampled_frames, fp)
-    with open('EndoMapper Testing Sampled Frames', 'wb') as fp:
+    with open(os.path.join(pickle_file_path, 'EndoMapper Testing Sampled Frames'), 'wb') as fp:
         pickle.dump(endomapper_testing_sampled_frames, fp)
 
-    with open('EndoMapper Inpaint only Training Sampled Frames', 'wb') as fp:
+    with open(os.path.join(pickle_file_path, 'EndoMapper Inpaint only Training Sampled Frames'), 'wb') as fp:
         pickle.dump(endomapper_inpaint_training_sampled_frames, fp)
-    with open('EndoMapper Inpaint only Validation Sampled Frames', 'wb') as fp:
+    with open(os.path.join(pickle_file_path, 'EndoMapper Inpaint only Validation Sampled Frames'), 'wb') as fp:
         pickle.dump(endomapper_inpaint_validation_sampled_frames, fp)
-    with open('EndoMapper Inpaint only Testing Sampled Frames', 'wb') as fp:
+    with open(os.path.join(pickle_file_path, 'EndoMapper Inpaint only Testing Sampled Frames'), 'wb') as fp:
         pickle.dump(endomapper_inpaint_testing_sampled_frames, fp)
     
-    with open('EndoMapper Spec only Training Sampled Frames', 'wb') as fp:
+    with open(os.path.join(pickle_file_path, 'EndoMapper Spec only Training Sampled Frames'), 'wb') as fp:
         pickle.dump(endomapper_speconly_training_sampled_frames, fp)
-    with open('EndoMapper Spec only Validation Sampled Frames', 'wb') as fp:
+    with open(os.path.join(pickle_file_path, 'EndoMapper Spec only Validation Sampled Frames'), 'wb') as fp:
         pickle.dump(endomapper_speconly_validation_sampled_frames, fp)
-    with open('EndoMapper Spec only Testing Sampled Frames', 'wb') as fp:
+    with open(os.path.join(pickle_file_path, 'EndoMapper Spec only Testing Sampled Frames'), 'wb') as fp:
         pickle.dump(endomapper_speconly_testing_sampled_frames, fp)
     
 

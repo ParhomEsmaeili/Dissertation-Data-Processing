@@ -1,4 +1,4 @@
-
+'''Script adapted from Soria et al. https://github.com/xavysp/MBIPED'''
 
 import numpy as np
 import os

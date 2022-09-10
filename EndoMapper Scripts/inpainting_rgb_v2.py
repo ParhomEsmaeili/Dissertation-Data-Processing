@@ -55,7 +55,7 @@ def rgb_correction(image_frame_paths, corrected_image_dir_path):
         filename = head_tail[1][:-3]
         output_filename = filename + 'jpg'
         cv2.imwrite(os.path.join(corrected_image_dir_path, output_filename), inpainted_image)
-    return print('Finished correcting rgb images')
+    return print('Finished inpainting RGB sequence')
 def main(args):
     endomapper_dir = os.path.join(os.path.split(os.getcwd())[0], 'EndoMapper', 'Simulated Sequences')
     
@@ -68,7 +68,7 @@ def main(args):
         image_frame_paths_list = image_frame_paths(rgb_dir_path)[:-1]
         rgb_correction(image_frame_paths_list, corrected_dir_path)
 
-    return print('Converting ground truth to labels complete!')
+    return print('Finished inpainting all RGB sequences!')
 
 if __name__=="__main__":
     args = parser_arguments()
