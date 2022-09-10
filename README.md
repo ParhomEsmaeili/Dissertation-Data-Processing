@@ -3,9 +3,11 @@ Repository containing the scripts which generate the training data as outlined i
 
 # Pre-requisites:
 
-Required packages:
+Required packages to install:
 NumPy
+
 OpenCV: cv2
+
 natsort
 
 
