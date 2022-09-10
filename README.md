@@ -3,13 +3,17 @@ Repository containing the scripts which generate the training data as outlined i
 
 # Pre-requisites:
 
-Required packages to install:
-NumPy
+**Required packages to install**:
 
-OpenCV: cv2
+**NumPy**
 
-natsort
+**OpenCV: cv2**
 
+**natsort**
+
+**imutils**
+
+**Adding datasets to the repository**
 
 Add two empty folders: One folder called "EndoMapper" and the other folder called "UCLSyntheticDataset"
 
