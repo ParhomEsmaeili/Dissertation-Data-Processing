@@ -13,7 +13,7 @@ Repository containing the scripts which generate the training data as outlined i
 
 **imutils**
 
-**Adding datasets to the repository**
+# Adding datasets to the repository**
 
 Add two empty folders: One folder called "EndoMapper" and the other folder called "UCLSyntheticDataset"
 
