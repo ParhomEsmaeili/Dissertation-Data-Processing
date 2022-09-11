@@ -1,4 +1,4 @@
-# Dissertation
+# Dissertation Data Processing Repository
 Repository containing the scripts which generate the training data as outlined in the methdology of the Dissertation.
 
 # Pre-requisites:
